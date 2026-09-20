@@ -1,0 +1,34 @@
+<section class="hero" aria-labelledby="hero-title">
+  <div class="hero__avatar-wrapper">
+    <img
+      class="hero__avatar"
+      [src]="avatarUrl()"
+      [alt]="'Avatar ilustrado de ' + nome()"
+      width="150"
+      height="150"
+      loading="eager"
+    />
+  </div>
+
+  <div class="hero__info">
+    <div class="hero__badge-row">
+      <span class="hero__badge">{{ papel() }}</span>
+      <span class="hero__status">
+        <span class="hero__status-dot" aria-hidden="true"></span>
+        Disponível para projetos
+      </span>
+    </div>
+
+    <h1 id="hero-title" class="hero__nome">{{ nome() }}</h1>
+    <p class="hero__bio">{{ bio() }}</p>
+
+    <div class="hero__actions">
+      <a href="#experiencia" class="hero__btn hero__btn--primary">
+        Ver Trajetória
+      </a>
+      <a href="#contato" class="hero__btn hero__btn--secondary">
+        Entrar em Contato
+      </a>
+    </div>
+  </div>
+</section>

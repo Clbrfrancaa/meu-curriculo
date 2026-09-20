@@ -1,0 +1,45 @@
+<section class="experiencia" id="experiencia" aria-labelledby="experiencia-titulo">
+  <div class="experiencia__header">
+    <span class="experiencia__tag">Jornada & Evolução</span>
+    <h2 id="experiencia-titulo" class="experiencia__titulo">Trajetória & Formação</h2>
+    <p class="experiencia__subtitulo">
+      Construindo uma base técnica sólida através da graduação acadêmica e capacitação prática de mercado.
+    </p>
+  </div>
+
+  <div class="timeline">
+    @for (item of experiencias(); track item.id) {
+      <article class="timeline__item">
+        <div class="timeline__card">
+          <div class="timeline__top">
+            <span class="timeline__periodo">{{ item.periodo }}</span>
+            <span
+              class="timeline__tipo-badge"
+              [class.timeline__tipo-badge--formacao]="item.tipo === 'formacao'"
+              [class.timeline__tipo-badge--curso]="item.tipo === 'curso'"
+              [class.timeline__tipo-badge--objetivo]="item.tipo === 'objetivo'"
+            >
+              @if (item.tipo === 'formacao') {
+                🎓 Ensino Superior
+              } @else if (item.tipo === 'curso') {
+                ⚡ Formação Intensiva
+              } @else {
+                🎯 Meta de Carreira
+              }
+            </span>
+          </div>
+
+          <h3 class="timeline__titulo">{{ item.titulo }}</h3>
+          <h4 class="timeline__instituicao">{{ item.instituicao }}</h4>
+          <p class="timeline__descricao">{{ item.descricao }}</p>
+
+          <div class="timeline__tags">
+            @for (tag of item.tags; track tag) {
+              <span class="timeline__tag-pill">{{ tag }}</span>
+            }
+          </div>
+        </div>
+      </article>
+    }
+  </div>
+</section>

@@ -1,0 +1,205 @@
+@use '../../../styles/mixins' as *;
+
+:host {
+  display: block;
+  animation: fadeInUp 0.7s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-xl);
+  padding: var(--space-2xl) var(--space-md);
+
+  @include tablet {
+    flex-direction: row;
+    text-align: left;
+    align-items: center;
+    gap: var(--space-2xl);
+    padding: var(--space-3xl) 0;
+  }
+
+  // ─── AVATAR COM ANEL BRILHANTE ─────────────────────
+  &__avatar-wrapper {
+    position: relative;
+    flex-shrink: 0;
+
+    // Anel de brilho Carmim ao redor do avatar
+    &::after {
+      content: '';
+      position: absolute;
+      inset: -4px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent-bordeaux));
+      z-index: -1;
+      opacity: 0.85;
+      box-shadow: var(--shadow-glow);
+      transition: transform var(--transition-normal), opacity var(--transition-normal);
+    }
+
+    &:hover::after {
+      transform: scale(1.05);
+      opacity: 1;
+    }
+  }
+
+  &__avatar {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    object-fit: cover;
+    background-color: var(--bg-secondary);
+    border: 3px solid var(--bg-primary);
+    display: block;
+
+    @include tablet {
+      width: 170px;
+      height: 170px;
+    }
+  }
+
+  // ─── INFORMAÇÕES PESSOAIS ──────────────────────────
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    max-width: 580px;
+  }
+
+  &__badge-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-sm);
+    flex-wrap: wrap;
+
+    @include tablet {
+      justify-content: flex-start;
+    }
+  }
+
+  &__badge {
+    display: inline-block;
+    padding: var(--space-xs) var(--space-md);
+    border-radius: var(--radius-full);
+    background-color: var(--badge-bg);
+    color: var(--accent);
+    border: 1px solid var(--border-color);
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  &__status {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.82rem;
+    color: var(--text-muted);
+  }
+
+  &__status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #10b981; // Verde disponível
+    box-shadow: 0 0 8px rgba(16, 185, 129, 0.6);
+    animation: pulse 2s infinite ease-in-out;
+  }
+
+  &__nome {
+    font-size: clamp(2.2rem, 5vw, 3.4rem);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
+    margin-top: var(--space-xs);
+  }
+
+  &__bio {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-top: var(--space-xs);
+  }
+
+  // ─── BOTÕES DE AÇÃO (CTA) ──────────────────────────
+  &__actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-md);
+    margin-top: var(--space-md);
+    flex-wrap: wrap;
+
+    @include tablet {
+      justify-content: flex-start;
+    }
+  }
+
+  &__btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-sm) var(--space-lg);
+    border-radius: var(--radius-md);
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+
+    &--primary {
+      background-color: var(--accent);
+      color: #ffffff;
+      box-shadow: 0 4px 16px var(--accent-glow);
+
+      &:hover {
+        background-color: var(--accent-hover);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 22px var(--accent-glow);
+      }
+    }
+
+    &--secondary {
+      background-color: var(--bg-card);
+      color: var(--text-primary);
+      border: 1px solid var(--border-color);
+
+      &:hover {
+        background-color: var(--bg-card-hover);
+        border-color: var(--border-hover);
+        transform: translateY(-2px);
+      }
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(0.85);
+  }
+}

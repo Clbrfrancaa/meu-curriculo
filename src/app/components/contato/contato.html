@@ -1,0 +1,98 @@
+<footer class="contato" id="contato" aria-labelledby="contato-titulo">
+  <div class="contato__card">
+    <div class="contato__header">
+      <span class="contato__tag">Conecte-se</span>
+      <h2 id="contato-titulo" class="contato__titulo">Vamos Conversar?</h2>
+      <p class="contato__subtitulo">
+        Estou disponível para novas oportunidades, projetos práticos e troca de experiências na área de tecnologia.
+      </p>
+    </div>
+
+    <!-- Caixa de Ação Rápida de E-mail -->
+    <div class="contato__email-box">
+      <div class="contato__email-info">
+        <span class="contato__email-label">E-mail Principal:</span>
+        <span class="contato__email-address">{{ email() }}</span>
+      </div>
+
+      <div class="contato__email-actions">
+        <button
+          type="button"
+          class="contato__btn contato__btn--copy"
+          [class.contato__btn--copied]="copiado()"
+          (click)="copiarEmail()"
+        >
+          @if (copiado()) {
+            <span class="contato__btn-content">✓ E-mail Copiado!</span>
+          } @else {
+            <span class="contato__btn-content">📋 Copiar E-mail</span>
+          }
+        </button>
+
+        <a [href]="'mailto:' + email()" class="contato__btn contato__btn--mailto">
+          ✉️ Enviar Mensagem
+        </a>
+      </div>
+    </div>
+
+    <!-- Links de Redes Sociais e Mensageiro -->
+    <div class="contato__links">
+      <a
+        [href]="githubUrl()"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="contato__social-link"
+      >
+        <img
+          src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg"
+          alt="Ícone do GitHub"
+          class="contato__social-icon"
+          width="24"
+          height="24"
+        />
+        <div class="contato__social-info">
+          <span class="contato__social-title">GitHub</span>
+          <span class="contato__social-user">&#64;Clbrfrancaa</span>
+        </div>
+      </a>
+
+      <a
+        [href]="linkedinUrl()"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="contato__social-link"
+      >
+        <img
+          src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linkedin/linkedin-plain.svg"
+          alt="Ícone do LinkedIn"
+          class="contato__social-icon"
+          width="24"
+          height="24"
+        />
+        <div class="contato__social-info">
+          <span class="contato__social-title">LinkedIn</span>
+          <span class="contato__social-user">/in/cleberfranca12</span>
+        </div>
+      </a>
+
+      <a
+        [href]="whatsappUrl()"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="contato__social-link"
+      >
+        <span class="contato__social-icon contato__social-icon--wa" aria-hidden="true">💬</span>
+        <div class="contato__social-info">
+          <span class="contato__social-title">WhatsApp</span>
+          <span class="contato__social-user">(85) 9 8700-1209</span>
+        </div>
+      </a>
+    </div>
+
+    <!-- Rodapé de Direitos e Stack -->
+    <div class="contato__footer-meta">
+      <p>Desenvolvido com <strong>Angular 22</strong> e <strong>SCSS Puro</strong> por <strong>Cleber França</strong>.</p>
+      <p class="contato__status-tech">Design System Crimson &amp; Bordeaux • Reatividade com Signals</p>
+    </div>
+  </div>
+</footer>

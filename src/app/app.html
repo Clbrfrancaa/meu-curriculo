@@ -1,0 +1,25 @@
+<div class="app-layout">
+  <!-- Barra de utilitários no topo (Toggle Dark/Light) -->
+  <header class="app-header">
+    <button
+      class="theme-toggle"
+      type="button"
+      (click)="toggleTheme()"
+      [attr.aria-label]="isDark() ? 'Mudar para tema claro' : 'Mudar para tema escuro'"
+    >
+      @if (isDark()) {
+        <span>☀️ Modo Claro</span>
+      } @else {
+        <span>🌙 Modo Escuro</span>
+      }
+    </button>
+  </header>
+
+  <!-- Conteúdo Principal do Currículo -->
+  <main class="app-main">
+    <app-hero />
+    <app-skills />
+    <app-experiencia />
+    <app-contato />
+  </main>
+</div>

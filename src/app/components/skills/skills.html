@@ -1,0 +1,59 @@
+<section class="skills" id="skills" aria-labelledby="skills-titulo">
+  <div class="skills__header">
+    <span class="skills__tag">Stack Técnica</span>
+    <h2 id="skills-titulo" class="skills__titulo">Habilidades & Tecnologias</h2>
+    <p class="skills__subtitulo">
+      Filtragem dinâmica por categoria com o novo controle de fluxo e Signals reativos do Angular 22.
+    </p>
+  </div>
+
+  <!-- Botões de Filtro por Categoria -->
+  <div class="skills__filtros" role="toolbar" aria-label="Filtrar por categoria">
+    @for (cat of categorias(); track cat) {
+      <button
+        type="button"
+        class="skills__filtro-btn"
+        [class.skills__filtro-btn--ativo]="filtroAtivo() === cat"
+        (click)="setFiltro(cat)"
+      >
+        {{ cat }}
+      </button>
+    }
+  </div>
+
+  <!-- Grid de Cards de Habilidades -->
+  <div class="skills__grid">
+    @for (skill of skillsFiltradas(); track skill.nome) {
+      <article class="skills__card">
+        <div class="skills__card-top">
+          @if (skill.iconeUrl) {
+            <img
+              [src]="skill.iconeUrl"
+              [alt]="'Logo oficial de ' + skill.nome"
+              class="skills__card-icon-img"
+              width="36"
+              height="36"
+              loading="lazy"
+            />
+          } @else {
+            <span class="skills__card-icon" aria-hidden="true">{{ skill.icone }}</span>
+          }
+
+          <span
+            class="skills__card-badge"
+            [class.skills__card-badge--praticando]="skill.nivel === 'Praticando'"
+            [class.skills__card-badge--em-uso]="skill.nivel === 'Em Uso'"
+            [class.skills__card-badge--domino]="skill.nivel === 'Domino'"
+          >
+            {{ skill.nivel }}
+          </span>
+        </div>
+
+        <h3 class="skills__card-nome">{{ skill.nome }}</h3>
+        <span class="skills__card-categoria">{{ skill.categoria }}</span>
+      </article>
+    } @empty {
+      <p class="skills__vazio">Nenhuma habilidade encontrada nesta categoria.</p>
+    }
+  </div>
+</section>

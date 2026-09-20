@@ -1,0 +1,116 @@
+// src/styles.scss
+// Design System Global — Currículo Cleber (Crimson & Bordeaux)
+
+// 1. Utilitários e Mixins (devem sempre vir no topo absoluto no Sass)
+@use './styles/mixins' as *;
+
+// 2. Tipografia Externa (Google Fonts: Inter + JetBrains Mono)
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap');
+
+// 3. Design Tokens Globais (Custom Properties)
+:root {
+  // ─── TEMA ESCURO PADRÃO (Dark Mode — Crimson & Bordeaux) ───
+  --bg-primary: #0d0b0e;             // Fundo escuro com leve nuance vinho
+  --bg-secondary: #161118;           // Fundo de blocos secundários
+  --bg-card: rgba(28, 20, 31, 0.75); // Superfície de cards com transparência
+  --bg-card-hover: rgba(42, 28, 47, 0.9);
+
+  // Bordas sutis com brilho de vinho/carmim
+  --border-color: rgba(255, 51, 102, 0.16);
+  --border-hover: rgba(255, 51, 102, 0.45);
+
+  // Tipografia
+  --text-primary: #ffffff;           // Títulos e destaques
+  --text-secondary: #c9bac5;         // Textos descritivos e parágrafos
+  --text-muted: #857180;             // Textos de apoio e datas
+
+  // Cores de Acento (Carmim Vibrante e Bordô Nobre)
+  --accent: #ff3366;                 // Vermelho Carmim vibrante
+  --accent-hover: #ff527b;
+  --accent-glow: rgba(255, 51, 102, 0.35);
+  --accent-bordeaux: #881337;        // Bordô encorpado de profundidade
+  --badge-bg: rgba(255, 51, 102, 0.12);
+
+  // Fontes
+  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  // Espaçamentos modulares
+  --space-xs: 0.25rem;  // 4px
+  --space-sm: 0.5rem;   // 8px
+  --space-md: 1rem;     // 16px
+  --space-lg: 1.5rem;   // 24px
+  --space-xl: 2rem;     // 32px
+  --space-2xl: 3rem;    // 48px
+  --space-3xl: 4.5rem;  // 72px
+
+  // Bordas e Raios
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-full: 9999px;
+
+  // Transições fluidas
+  --transition-fast: 150ms ease;
+  --transition-normal: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-theme: 400ms ease;
+
+  // Sombras
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 6px 20px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 12px 36px rgba(0, 0, 0, 0.55);
+  --shadow-glow: 0 0 24px var(--accent-glow);
+}
+
+// ─── TEMA CLARO (Light Mode — Alternado via atributo) ───────
+[data-theme='light'] {
+  --bg-primary: #faf6f7;
+  --bg-secondary: #f2e9ed;
+  --bg-card: rgba(255, 255, 255, 0.9);
+  --bg-card-hover: #ffffff;
+
+  --border-color: rgba(159, 18, 57, 0.14);
+  --border-hover: rgba(159, 18, 57, 0.38);
+
+  --text-primary: #1f131a;
+  --text-secondary: #574450;
+  --text-muted: #8a7582;
+
+  --accent: #9f1239;                 // Bordô intenso de alto contraste
+  --accent-hover: #881337;
+  --accent-glow: rgba(159, 18, 57, 0.2);
+  --accent-bordeaux: #4c0519;
+  --badge-bg: rgba(159, 18, 57, 0.1);
+
+  --shadow-sm: 0 2px 8px rgba(31, 19, 26, 0.05);
+  --shadow-md: 0 6px 20px rgba(31, 19, 26, 0.08);
+  --shadow-lg: 0 12px 36px rgba(31, 19, 26, 0.12);
+}
+
+// 4. Reset CSS Global
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+// 5. Estilos Base da Página
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.6;
+  min-height: 100vh;
+  transition: background-color var(--transition-theme), color var(--transition-theme);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// Suporte para código ou tags mono
+code, pre {
+  font-family: var(--font-mono);
+}
