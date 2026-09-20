@@ -18,6 +18,6 @@ export class Hero {
   // Avatar tech com referência a Lobo/Cyberpunk via API do Dicebear
   readonly avatarUrl = signal(
     // 'https://api.dicebear.com/9.x/bottts-neutral/svg?seed=CrimsonWolf&backgroundColor=161118'
-    'eu.jpg'
+    '/eu.jpg'
   );
 }
